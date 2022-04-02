@@ -8,7 +8,7 @@ function WorldsContainer() {
 
     return (
         <div className={styles.container}>
-            Carosuel
+            Carosuel Component Here
         </div>
     );
 }

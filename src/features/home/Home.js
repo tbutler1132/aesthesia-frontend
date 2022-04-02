@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Home() {
     return (
         <div>
-            Welcome to Aesthesia
+            <div>Aesthesia</div>
+            <Link to="login">Enter</Link>
+            <div>Three js</div>
         </div>
     );
 }

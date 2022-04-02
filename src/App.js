@@ -8,6 +8,7 @@ import World from './features/world/World';
 import Song from './features/world/Song';
 import Submissions from './features/world/Submissions';
 import Home from './features/home/Home';
+import Login from './features/home/Login';
 import Discover from './features/discover/Discover';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
         {/* <Route path="/counter" element={<Counter />} /> */}
         <Route path="/users" element={<User />} />
         <Route path="/discover" element={<Discover />} />
