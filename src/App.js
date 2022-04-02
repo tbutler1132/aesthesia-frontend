@@ -9,12 +9,10 @@ import Song from './features/world/Song';
 import Submissions from './features/world/Submissions';
 import Home from './features/home/Home';
 import Discover from './features/discover/Discover';
-import Test from './app/components/Test.tsx';
 
 function App() {
   return (
     <div className="App">
-      <Test />
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="/counter" element={<Counter />} /> */}
