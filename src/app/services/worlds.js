@@ -7,9 +7,13 @@ export const worldsApi = createApi({
       getWorlds: builder.query({
         query: () => `worlds`,
       }),
+      getWorld: builder.query({
+        query: (id) => `worlds/${id}`,
+      }),
     }),
 })
 
 export const {
-    useGetWorldsQuery
+    useGetWorldsQuery,
+    useGetWorldQuery
 } = worldsApi
