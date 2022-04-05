@@ -1,29 +1,41 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
-import { useGetWorldsQuery } from "../../app/services/worlds";
+import { useGetWorldQuery } from "../../app/services/worlds";
+import { useParams } from "react-router-dom";
+import styles from './World.module.css';
 
 function World() {
 
-    const { data, isLoading } = useGetWorldsQuery()
+    let { id } = useParams()
+    const { data, isLoading } = useGetWorldQuery(id)
 
-    console.log("World", isLoading, data)
-
+    if(isLoading) return <div>Loading...</div>
     return (
-        <div>
-            <Nav />
-            <p>Description</p>
-            <div>
-                Audio References Spotify API
+        <>
+        <Nav />
+        <div className={styles.worldContainer}>
+            <h2>Description</h2>
+            <div className={styles.descriptionContainer}>
+                <p>{data.description}</p>
             </div>
-            <div>
-                Art references
+            <div id={styles.audioReferenceContainer} className={styles.carosuelContainer}>
+                {data.referenceSongs.map(song => 
+                    <span key={song}>{song} </span>    
+                )}
             </div>
-            <div>
-                tags
+            <div id={styles.imageReferenceContainer} className={styles.carosuelContainer}>
+                {data.referenceImages.map(image => 
+                    <span key={image}>{image} </span>    
+                )}
             </div>
-            <button>Create</button>
+            <div className={styles.tagsContainer}>
+                {data.tags.map(tag => 
+                    <span key={tag}>{tag} </span>    
+                )}
+            </div>
             <Outlet />
         </div>
+        </>
     );
 }
 

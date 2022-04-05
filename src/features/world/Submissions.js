@@ -1,6 +1,12 @@
 import Nav from "./Nav";
+import { useGetWorldQuery } from "../../app/services/worlds";
+import { useParams } from "react-router-dom";
 
 function Submissions(props) {
+    let { id } = useParams()
+    const { data } = useGetWorldQuery(id)
+
+    console.log(data)
     return (
         <div>
             <Nav />

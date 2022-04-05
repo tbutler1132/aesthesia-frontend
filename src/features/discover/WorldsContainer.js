@@ -7,10 +7,7 @@ function WorldsContainer() {
 
     const { data, isLoading } = useGetWorldsQuery()
 
-    console.log(isLoading, data)
-
     //Fetch worlds, map cards
-
 
     if(isLoading) return <div>Loading...</div>
     return (

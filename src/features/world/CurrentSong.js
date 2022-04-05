@@ -1,7 +1,14 @@
 import Nav from "./Nav";
 import DiscussionContainer from "./DiscussionContainer";
+import { useGetCurrentSongQuery } from "../../app/services/worlds";
+import { useParams } from "react-router-dom";
 
-function Song() {
+function CurrentSong() {
+
+    let { id } = useParams()
+    const { data, isLoading } = useGetCurrentSongQuery(id)
+
+    console.log(data)
     return (
         <div>
             <Nav />
@@ -17,4 +24,4 @@ function Song() {
     );
 }
 
-export default Song;
+export default CurrentSong;

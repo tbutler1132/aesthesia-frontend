@@ -10,10 +10,18 @@ export const worldsApi = createApi({
       getWorld: builder.query({
         query: (id) => `worlds/${id}`,
       }),
+      getWorldSongs: builder.query({
+        query: (id) => `worlds/${id}/songs`,
+      }),
+      getCurrentSong: builder.query({
+        query: (id) => `worlds/${id}/currentSong`,
+      }),
     }),
 })
 
 export const {
     useGetWorldsQuery,
-    useGetWorldQuery
+    useGetWorldQuery,
+    useGetWorldSongsQuery,
+    useGetCurrentSongQuery,
 } = worldsApi
