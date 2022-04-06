@@ -2,24 +2,39 @@ import Nav from "./Nav";
 import DiscussionContainer from "./DiscussionContainer";
 import { useGetCurrentSongQuery } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress"
 
 function CurrentSong() {
 
     let { id } = useParams()
     const { data, isLoading } = useGetCurrentSongQuery(id)
 
-    console.log(data)
+    const currentIteration = () => {
+        return data.iterations.find(iteration => iteration.current)
+    }
+
+    const renderStems = () => {
+        return currentIteration().stems.map(stem => 
+            <p key={stem._id}>{stem.track}: {stem.file}</p>
+        )
+    }
+
     return (
         <div>
             <Nav />
             <hr />
-            <h3>Current</h3>
-            <p>Master:</p>
-            <p>Stem 1:</p>
-            <p>Stem 2:</p>
-            <p>Stem 3:</p>
-            <hr />
-            <DiscussionContainer />
+            {isLoading 
+                ? 
+                    <CircularProgress color="secondary"/>
+                :
+                    <div>
+                        <h3>{currentIteration().bpm}</h3>
+                        <p>Master:</p>
+                        {renderStems()}
+                        <hr />
+                        <DiscussionContainer />
+                    </div>
+            }
         </div>
     );
 }
