@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import { useGetWorldQuery } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
-import Spotify from 'react-spotify-embed'
 import styles from './World.module.css';
 
 function World() {

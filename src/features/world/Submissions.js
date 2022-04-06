@@ -1,29 +1,35 @@
 import Nav from "./Nav";
-import { useGetCurrentSongQuery } from "../../app/services/worlds";
-import useGetCurrentIteration from "../../hooks/useGetCurrentIteration";
+import { useGetCurrentSongQuery, useUpdateSubmissionMutation } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress"
 
 function Submissions() {
 
-    const { data, isLoading } = useGetCurrentSongQuery()
     let { id } = useParams()
+    const { data, isLoading } = useGetCurrentSongQuery(id)
+    const [voteOnSubmission, /**result**/] = useUpdateSubmissionMutation()
 
-    const iteration = useGetCurrentIteration(id)
+    const voteHandler = (id, currentVotes) => {
+        let votes = currentVotes + 1
+        voteOnSubmission({id, votes: {votes}})
+    }
+
+    const renderSubmissions = () => {
+        return data.currentIteration.submissions.map(submission => 
+            <div style={{border: "solid"}} key={submission._id}>
+                <button onClick={() => voteHandler(submission._id, submission.votes)}>Vote</button>
+                <p>Votes: {submission.votes}</p>
+                <p>{submission.bpm} Bpm</p>
+            </div>    
+        )
+    }
 
 
-
-    console.log("HOOK", iteration)
+    if(isLoading) return <CircularProgress />
     return (
         <div>
             <Nav />
-            <div>
-                <h4>Artist Name</h4>
-                <p>Master</p>
-                <p>Description</p>
-            </div>
-            <div>
-                Vote
-            </div>
+            {renderSubmissions()} 
         </div>
     );
 }
