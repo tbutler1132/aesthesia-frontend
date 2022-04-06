@@ -1,9 +1,22 @@
 nav {
-    width: 50%;
     display: flex;
-    justify-content: space-around;
-    margin-left: 10px;
-    margin-top: 10px;
+    justify-content: flex-start;
+    margin: 50px 20px 0 20px;
+    padding-bottom: 15px;
+    text-decoration: none;
+    border-bottom: solid;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    border-bottom: solid;
+    border-color: blueviolet;
+    margin-left: 40px;
+}
+
+h1 {
+    color: white;
 }
 
 .worldContainer {
@@ -12,14 +25,15 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    text-align: left;
 }
 
-.carosuelContainer {
+.container {
     border-radius: 4px;
-}
-
-.descriptionContainer {
+    background-color: #1F487E;
+    color: white;
     border: solid;
+    border-color: rgb(66, 0, 128);
 }
 
 #audioReferenceContainer {
@@ -27,9 +41,15 @@ nav {
 }
 
 #imageReferenceContainer {
-    border: solid;
+    display: flex;
+    justify-content: space-around;
 }
 
 .tagsContainer {
+    display: flex;
+}
+
+.tag {
     border: solid;
+    border-radius: 8px;
 }

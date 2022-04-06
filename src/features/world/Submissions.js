@@ -1,12 +1,18 @@
 import Nav from "./Nav";
-import { useGetWorldQuery } from "../../app/services/worlds";
+import { useGetCurrentSongQuery } from "../../app/services/worlds";
+import useGetCurrentIteration from "../../hooks/useGetCurrentIteration";
 import { useParams } from "react-router-dom";
 
-function Submissions(props) {
-    let { id } = useParams()
-    const { data } = useGetWorldQuery(id)
+function Submissions() {
 
-    console.log(data)
+    const { data, isLoading } = useGetCurrentSongQuery()
+    let { id } = useParams()
+
+    const iteration = useGetCurrentIteration(id)
+
+
+
+    console.log("HOOK", iteration)
     return (
         <div>
             <Nav />

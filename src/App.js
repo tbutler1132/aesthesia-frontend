@@ -3,6 +3,7 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
 // import { Counter } from './features/counter/Counter';
+import Nav from './components/Nav'
 import User from './features/user/User';
 import World from './features/world/World';
 import Songs from './features/world/Songs';
@@ -15,6 +16,7 @@ import CurrentSong from './features/world/CurrentSong';
 function App() {
   return (
     <div className="App">
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

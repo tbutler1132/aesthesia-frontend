@@ -3,6 +3,10 @@
 }
 
 body {
-  background-color: black;
-  color: white;
+  background-color: #152749;
+  color: rgb(182, 177, 177);
+}
+
+.nav-container {
+  text-align: left;
 }
