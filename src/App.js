@@ -32,11 +32,15 @@ TODO: A song is voted complete
 TODO: Auth
 TODO: Create world form
 
+!Make a new branch
 TODO: File handling
 TODO: Spotify
   - Search spotify for songs, add song url to world referenceSongs array
 
-TODO: Styling round 1
+!Make a new branch. So I have version control over styling
+TODO: Styling round 1 
+
+TODO: Refactor 1
 
 TODO: Home display worlds
 */
