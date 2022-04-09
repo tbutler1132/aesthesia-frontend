@@ -9,13 +9,9 @@ function CurrentSong() {
     let { id } = useParams()
     const { data, isLoading } = useGetCurrentSongQuery(id)
 
-    const currentIteration = () => {
-        return data.iterations.find(iteration => iteration.current)
-    }
-
     const renderStems = () => {
-        return currentIteration().stems.map(stem => 
-            <p key={stem._id}>{stem.track}: {stem.file}</p>
+        return data.currentIteration.stems.map(stem => 
+            <Stem key={stem._id} stem={stem}/>
         )
     }
 
@@ -27,16 +23,24 @@ function CurrentSong() {
                 ? 
                     <CircularProgress color="secondary"/>
                 :
-                    <div>
-                        <h3>{currentIteration().bpm}</h3>
-                        <p>Master:</p>
+                    <>
+                        <button>Vote complete</button>
+                        <h3>{data.currentIteration.bpm}</h3>
                         {renderStems()}
                         <hr />
-                        <DiscussionContainer />
-                    </div>
+                        <DiscussionContainer songId={data._id} comments={data.currentIteration.comments}/>
+                    </>
             }
         </div>
     );
+}
+
+function Stem({ stem }){
+    return(
+        <p>
+            {stem.track}: {stem.file}
+        </p>
+    )
 }
 
 export default CurrentSong;

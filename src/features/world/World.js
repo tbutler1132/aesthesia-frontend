@@ -23,13 +23,13 @@ function World() {
                 <div id={styles.audioReferenceContainer} className={styles.container}>
                     {data.referenceSongs.map(song => 
                         // <Spotify link="https://open.spotify.com/track/0iTI5FTB9iEUtcMdx9YyZS?si=6cb240ecfe5441b4"/> 
-                        <span>{song}</span> 
+                        <span key={song}>{song}</span> 
                     )}
                 </div>
                 <h2>Reference Art</h2>
                 <div id={styles.imageReferenceContainer} className={styles.container}>
                     {data.referenceImages.map(image => 
-                        <img height="200px" width="200px" src="https://static01.nyt.com/images/2021/02/07/fashion/NEW-BLUE-1/NEW-BLUE-1-superJumbo.jpg" alt=""/>
+                        <img key={image} height="200px" width="200px" src="https://static01.nyt.com/images/2021/02/07/fashion/NEW-BLUE-1/NEW-BLUE-1-superJumbo.jpg" alt=""/>
                     )}
                 </div>
                 <h2>Tags</h2>
