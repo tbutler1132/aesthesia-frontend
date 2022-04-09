@@ -34,6 +34,13 @@ export const worldsApi = createApi({
         }),
         invalidatesTags: ['Comments']
       }),
+      createSubmission: builder.mutation({
+        query: ({submission}) => ({
+          url: `submissions`,
+          method: 'POST',
+          body: submission,
+        })
+      }),
     }),
 })
 
@@ -43,5 +50,6 @@ export const {
     useGetWorldSongsQuery,
     useGetCurrentSongQuery,
     useUpdateSubmissionMutation,
-    useCreateIterationCommentMutation
+    useCreateIterationCommentMutation,
+    useCreateSubmissionMutation
 } = worldsApi

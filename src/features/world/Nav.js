@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import styles from './World.module.css';
+import CreateSubmission from "./CreateSubmission";
 
 
 function Nav() {
@@ -11,7 +12,7 @@ function Nav() {
             <Link to={`/worlds/${id}/currentSong`}>Current Song</Link>
             <Link to={`/worlds/${id}/submissions`}> Current Submissions</Link>
             <Link to={`/worlds/${id}/songs`}>Complete Songs</Link>
-            <button>Submit an iteration!</button>
+            <CreateSubmission />
         </nav>
     );
 }

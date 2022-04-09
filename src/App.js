@@ -14,8 +14,9 @@ import Discover from './features/discover/Discover';
 import CurrentSong from './features/world/CurrentSong';
 
 /*
-TODO: Fix create comment
-  - Debug
+// TODO: Fix create comment √
+//   - Debug
+
 TODO: Create submission form
   - POST endpoint for submission
   - Create a form
