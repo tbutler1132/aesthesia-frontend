@@ -1,26 +1,17 @@
 import Nav from "./Nav";
-import { useGetCurrentSongQuery, useUpdateSubmissionMutation } from "../../app/services/worlds";
+import { useGetCurrentSongQuery, useUpdateSubmissionMutation, useUpdateCurrentIterationMutation } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress"
 
 function Submissions() {
 
+    //Redundant
     let { id } = useParams()
     const { data, isLoading } = useGetCurrentSongQuery(id)
-    const [voteOnSubmission, /**result**/] = useUpdateSubmissionMutation()
-
-    const voteHandler = (id, currentVotes) => {
-        let votes = currentVotes + 1
-        voteOnSubmission({id, votes: {votes}})
-    }
-
+   
     const renderSubmissions = () => {
         return data.currentIteration.submissions.map(submission => 
-            <div style={{border: "solid"}} key={submission._id}>
-                <button onClick={() => voteHandler(submission._id, submission.votes)}>Vote</button>
-                <p>Votes: {submission.votes}</p>
-                <p>{submission.bpm} Bpm</p>
-            </div>    
+            <Submission submission={submission} songId={data._id}/>
         )
     }
 
@@ -32,6 +23,30 @@ function Submissions() {
             {renderSubmissions()} 
         </div>
     );
+}
+
+function Submission({ submission, songId }){
+
+    const [voteOnSubmission, /**result**/] = useUpdateSubmissionMutation()
+    const [updateCurrentIteration, /**result**/] = useUpdateCurrentIterationMutation()
+
+    const voteHandler = (id, currentVotes) => {
+        if(currentVotes === 4){
+            alert("VOTES 4")
+            updateCurrentIteration({id: songId, iteration: submission})
+        }else{
+            let votes = currentVotes + 1
+            voteOnSubmission({id, votes: {votes}})
+        }
+    }
+
+    return(
+        <div style={{border: "solid"}} key={submission._id}>
+            <button onClick={() => voteHandler(submission._id, submission.votes)}>Vote</button>
+            <p>Votes: {submission.votes}</p>
+            <p>{submission.bpm} Bpm</p>
+        </div>  
+    )
 }
 
 export default Submissions;

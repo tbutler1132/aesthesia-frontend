@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const worldsApi = createApi({
     reducerPath: 'worldsApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000/' }),
-    tagTypes: ['Votes', "Comments"],
+    tagTypes: ['Submissions', "Comments"],
     endpoints: (builder) => ({
       getWorlds: builder.query({
         query: () => `worlds`,
@@ -16,7 +16,7 @@ export const worldsApi = createApi({
       }),
       getCurrentSong: builder.query({
         query: (id) => `worlds/${id}/currentSong`,
-        providesTags: ['Votes', 'Comments']
+        providesTags: ['Submissions', 'Comments']
       }),
       updateSubmission: builder.mutation({
         query: ({id, votes}) => ({
@@ -24,7 +24,7 @@ export const worldsApi = createApi({
           method: 'PATCH',
           body: votes,
         }),
-        invalidatesTags: ['Votes']
+        invalidatesTags: ['Submissions']
       }),
       createIterationComment: builder.mutation({
         query: ({id, comment}) => ({
@@ -47,15 +47,16 @@ export const worldsApi = createApi({
           url: `submissions?songId=${id}`,
           method: 'POST',
           body: submission,
-        })
-        // async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
-        //   console.log(fetchWithBQ)
-        //   const newSubmission = fetchWithBQ({
-        //     url: 'submissions',
-        //     method: 'POST',
-        //     body: 'EAR'
-        //   })
-        // }
+        }),
+        invalidatesTags: ['Submissions']
+      }),
+      updateCurrentIteration: builder.mutation({
+        query: ({id, iteration}) => ({
+          url: `songs/${id}/currentIteration`,
+          method: 'POST',
+          body: iteration,
+        }),
+        invalidatesTags: ['Submissions']
       }),
 
     }),
@@ -69,5 +70,6 @@ export const {
     useUpdateSubmissionMutation,
     useCreateIterationCommentMutation,
     useCreateSubmissionMutation,
-    useAddSubmissionToSongMutation
+    useAddSubmissionToSongMutation,
+    useUpdateCurrentIterationMutation
 } = worldsApi

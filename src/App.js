@@ -17,9 +17,9 @@ import CurrentSong from './features/world/CurrentSong';
 // TODO: Fix create comment √
 //   - Debug
 
-TODO: Create submission form
-  - POST endpoint for submission
-  - Create a form
+// TODO: Create submission form
+//   - POST endpoint for submission
+//   - Create a form
 TODO: New iteration (a submission reached enough votes to become an iteration)
   - PATCH Song
     - Copy current iteration and push it into iterations

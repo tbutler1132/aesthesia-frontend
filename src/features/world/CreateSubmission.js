@@ -46,17 +46,37 @@ function CreateSubmission() {
             vocals
          } = submission
 
+         const stems = [
+             {
+                 track: 'drums',
+                 file: drums
+             },
+             {
+                 track: 'master',
+                 file: master
+             },
+             {
+                 track: 'bass',
+                 file: bass
+             },
+             {
+                 track: 'instruments',
+                 file: instruments
+             },
+             {
+                 track: 'vocals',
+                 file: vocals
+             },
+         ]
+
+         
         createSubmission(
             {id: data._id, 
             submission: {
-                bass,
                 bpm,
                 description,
-                drums,
-                instruments,
-                master,
                 scale,
-                vocals
+                stems: stems
             }
         })
 
@@ -69,7 +89,7 @@ function CreateSubmission() {
         
     }
 
-    if(isLoading) return <div>Loading...</div>
+    if(isLoading) return <Button disabled>Open modal</Button>
     return (
         <>        
             <Button onClick={handleOpen}>Open modal</Button>
@@ -84,7 +104,7 @@ function CreateSubmission() {
                         Text in a modal
                     </Typography>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <TextField label="BPM" {...register("bpm")}/>    
+                        <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} label="BPM" {...register("bpm")}/>    
                         <TextField label="Key" {...register("scale")}/>    
                         <TextField label="Master" {...register("master")}/>    
                         <TextField label="Drums" {...register("drums")}/>    
