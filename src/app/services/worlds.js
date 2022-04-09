@@ -34,13 +34,30 @@ export const worldsApi = createApi({
         }),
         invalidatesTags: ['Comments']
       }),
+      addSubmissionToSong: builder.mutation({
+        query: ({id, submissionId}) => ({
+          url: `songs/${id}/currentIteration/submissions`,
+          method: 'PATCH',
+          body: submissionId,
+        }),
+        invalidatesTags: ['Comments']
+      }),
       createSubmission: builder.mutation({
-        query: ({submission}) => ({
-          url: `submissions`,
+        query: ({id, submission}) => ({
+          url: `submissions?songId=${id}`,
           method: 'POST',
           body: submission,
         })
+        // async queryFn(_arg, _queryApi, _extraOptions, fetchWithBQ) {
+        //   console.log(fetchWithBQ)
+        //   const newSubmission = fetchWithBQ({
+        //     url: 'submissions',
+        //     method: 'POST',
+        //     body: 'EAR'
+        //   })
+        // }
       }),
+
     }),
 })
 
@@ -51,5 +68,6 @@ export const {
     useGetCurrentSongQuery,
     useUpdateSubmissionMutation,
     useCreateIterationCommentMutation,
-    useCreateSubmissionMutation
+    useCreateSubmissionMutation,
+    useAddSubmissionToSongMutation
 } = worldsApi

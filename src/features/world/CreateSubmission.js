@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
-import { useCreateSubmissionMutation, useGetCurrentSongQuery } from '../../app/services/worlds'
+import { useCreateSubmissionMutation, useGetCurrentSongQuery, useAddSubmissionToSongMutation } from '../../app/services/worlds'
 
 import Modal from '@mui/material/Modal'
 import Button from '@mui/material/Button'
@@ -26,10 +26,10 @@ function CreateSubmission() {
 
     let { id } = useParams()
     const { data, isLoading } = useGetCurrentSongQuery(id)
-    console.log(data)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [open, setOpen] = useState(false);
     const [createSubmission, result] = useCreateSubmissionMutation()
+    const [addSubmission] = useAddSubmissionToSongMutation()
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -46,7 +46,7 @@ function CreateSubmission() {
             vocals
          } = submission
 
-        await createSubmission(
+        createSubmission(
             {id: data._id, 
             submission: {
                 bass,
@@ -60,7 +60,13 @@ function CreateSubmission() {
             }
         })
 
-        console.log("REstlu", result)
+
+
+        // addSubmission({
+        //     id,
+
+        // })
+        
     }
 
     if(isLoading) return <div>Loading...</div>
