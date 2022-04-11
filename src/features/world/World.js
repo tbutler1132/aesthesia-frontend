@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import { useGetWorldQuery } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
 import styles from './World.module.css';
+import Spotify from 'react-spotify-embed'
 
 function World() {
 
@@ -22,8 +23,8 @@ function World() {
                 <h2>Reference Songs</h2>
                 <div id={styles.audioReferenceContainer} className={styles.container}>
                     {data.referenceSongs.map(song => 
-                        // <Spotify link="https://open.spotify.com/track/0iTI5FTB9iEUtcMdx9YyZS?si=6cb240ecfe5441b4"/> 
-                        <span key={song}>{song}</span> 
+                        <Spotify link="https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b"/> 
+                        // <span key={song}>{song}</span> 
                     )}
                 </div>
                 <h2>Reference Art</h2>

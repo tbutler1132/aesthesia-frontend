@@ -20,7 +20,13 @@ function Submissions() {
     return (
         <div>
             <Nav />
+            {!data.currentIteration.submissions.length ?
+            <h1>No submissions</h1>
+            :
+            <>
             {renderSubmissions()} 
+            </>
+            }
         </div>
     );
 }

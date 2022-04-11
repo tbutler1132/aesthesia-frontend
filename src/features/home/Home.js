@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 function Home() {
     return (
         <div>
-            <div>Aesthesia</div>
+            <h1>Aesthesia</h1>
             <Link to="login">Enter</Link>
-            <div>Three js</div>
+            {/* <div>Three js</div> */}
         </div>
     );
 }

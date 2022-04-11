@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const worldsApi = createApi({
     reducerPath: 'worldsApi',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000/' }),
-    tagTypes: ['Submissions', "Comments"],
+    tagTypes: ['Submissions', "Comments", "completeVotes"],
     endpoints: (builder) => ({
       getWorlds: builder.query({
         query: () => `worlds`,
@@ -16,7 +16,7 @@ export const worldsApi = createApi({
       }),
       getCurrentSong: builder.query({
         query: (id) => `worlds/${id}/currentSong`,
-        providesTags: ['Submissions', 'Comments']
+        providesTags: ['Submissions', 'Comments', "completeVotes"]
       }),
       updateSubmission: builder.mutation({
         query: ({id, votes}) => ({
@@ -58,6 +58,19 @@ export const worldsApi = createApi({
         }),
         invalidatesTags: ['Submissions']
       }),
+      updateCurrentIterationCompleteVotes: builder.mutation({
+        query: ({ id }) => ({
+          url: `songs/${id}/currentIteration/votes`,
+          method: 'PATCH',
+        }),
+        invalidatesTags: ['completeVotes']
+      }),
+      completeCurrentSong: builder.mutation({
+        query: ({ id }) => ({
+          url: `worlds/${id}/currentSong/complete`,
+          method: 'PATCH',
+        }),
+      }),
 
     }),
 })
@@ -71,5 +84,7 @@ export const {
     useCreateIterationCommentMutation,
     useCreateSubmissionMutation,
     useAddSubmissionToSongMutation,
-    useUpdateCurrentIterationMutation
+    useUpdateCurrentIterationMutation,
+    useUpdateCurrentIterationCompleteVotesMutation,
+    useCompleteCurrentSongMutation
 } = worldsApi
