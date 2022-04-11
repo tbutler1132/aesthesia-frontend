@@ -19,6 +19,18 @@ h1 {
     color: white;
 }
 
+.createWorld {
+    text-align: left;
+    padding: 2%;
+}
+
+.referenceContainer {
+    border: solid;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 .worldContainer {
     padding: 1% 5% 1% 5%;
     min-height: 100vh;

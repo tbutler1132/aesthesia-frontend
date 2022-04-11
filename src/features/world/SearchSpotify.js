@@ -3,6 +3,7 @@ import { useLazySearchTracksQuery } from '../../app/services/spotify';
 import { useDispatch } from 'react-redux';
 import { addReferenceTrack } from './createWorldSlice';
 import Spotify from 'react-spotify-embed'
+import ButtonCard from '../../components/ButtonCard';
 
 import Modal from '@mui/material/Modal'
 import Button from '@mui/material/Button'
@@ -54,7 +55,7 @@ function SearchSpotify(props) {
 
     return (
         <>        
-            <Button onClick={handleOpen}>Open modal</Button>
+            <ButtonCard clickHandler={handleOpen} onClick={handleOpen} />
             <Modal
             open={open}
             onClose={handleClose}
