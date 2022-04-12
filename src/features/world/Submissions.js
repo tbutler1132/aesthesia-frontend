@@ -38,9 +38,10 @@ function Submission({ submission, songId }){
 
     const voteHandler = (id, currentVotes) => {
         if(currentVotes === 4){
-            alert("VOTES 4")
+            console.log("Hit")
             updateCurrentIteration({id: songId, iteration: submission})
         }else{
+            console.log("VOTE")
             let votes = currentVotes + 1
             voteOnSubmission({id, votes: {votes}})
         }

@@ -7,7 +7,7 @@ nav {
     border-bottom: solid;
 }
 
-a {
+.worldNav > a {
     text-decoration: none;
     color: white;
     border-bottom: solid;

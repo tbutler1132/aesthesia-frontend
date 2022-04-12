@@ -19,7 +19,6 @@ function CurrentSong() {
 
     const voteHandler = () => {
         if(data.currentIteration.completeVotes >= 4){
-            alert('Song complete')
             completeSong({id})
         }else{
             incrementVote({id: data._id})
