@@ -3,14 +3,21 @@
 }
 
 body {
-  background-color: #152749;
+  background-color: #050911;
   color: rgb(182, 177, 177);
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 .nav-container {
   text-align: left;
-  background-color: rgb(1, 13, 20);
+  background-color: rgb(27, 60, 80);
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   height: 70px;
 }
 

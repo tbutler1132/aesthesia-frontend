@@ -37,7 +37,7 @@ export const worldsApi = createApi({
       addSubmissionToSong: builder.mutation({
         query: ({id, submissionId}) => ({
           url: `songs/${id}/currentIteration/submissions`,
-          method: 'PATCH',
+          method: 'PATCH', 
           body: submissionId,
         }),
         invalidatesTags: ['Comments']

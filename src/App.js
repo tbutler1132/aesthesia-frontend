@@ -60,7 +60,7 @@ function App() {
         <Route path="/users" element={<User />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/worlds/:id" element={<World />} />
-        <Route path="/worlds/new" element={<CreateWorld maxReferenceTracks={3}/>} />
+        <Route path="/worlds/new" element={<CreateWorld maxReferenceTracks={3} maxReferenceImages={3}/>} />
         <Route path="/worlds/:id/songs" element={<Songs />} />
         <Route path="/worlds/:id/currentSong" element={<CurrentSong />} />
         <Route path="/worlds/:id/submissions" element={<Submissions />} />

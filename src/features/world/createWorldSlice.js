@@ -19,10 +19,13 @@ export const createWorldSlice = createSlice({
         },
         addTag: (state, action) => {
             state.tags.push(action.payload)
+        },
+        addReferenceImage: (state, action) => {
+            state.referenceImages.push(action.payload)
         }
     }
 })
 
-export const { setDescription, addReferenceTrack, addTag } = createWorldSlice.actions
+export const { setDescription, addReferenceTrack, addTag, addReferenceImage } = createWorldSlice.actions
 
 export default createWorldSlice.reducer

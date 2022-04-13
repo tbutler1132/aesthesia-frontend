@@ -4,13 +4,14 @@ import { useGetWorldQuery } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
 import styles from './World.module.css';
 import Spotify from 'react-spotify-embed'
+import CircularProgress from "@mui/material/CircularProgress"
 
 function World() {
 
     let { id } = useParams()
     const { data, isLoading } = useGetWorldQuery(id)
 
-    if(isLoading) return <div>Loading...</div>
+    if(isLoading) return <CircularProgress />
     return (
         <div className={styles.worldPage}>
             <Nav />
@@ -23,7 +24,7 @@ function World() {
                 <h2>Reference Songs</h2>
                 <div id={styles.audioReferenceContainer} className={styles.container}>
                     {data.referenceSongs.map(song => 
-                        <Spotify link="https://open.spotify.com/track/4EWCNWgDS8707fNSZ1oaA5?si=0b4c066f963e496b"/> 
+                        <Spotify link={song}/> 
                         // <span key={song}>{song}</span> 
                     )}
                 </div>

@@ -4,7 +4,7 @@ function Discover() {
     return (
         <div>
             <h1>Discover</h1>
-            <WorldsContainer />
+            <WorldsContainer header="Popular Worlds"/>
         </div>
     );
 }

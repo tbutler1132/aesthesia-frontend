@@ -1,8 +1,7 @@
-import { useState } from 'react';
 // import { useForm, FormProvider, useFormContext } from "react-hook-form";
 // import { Editor } from 'react-draft-wysiwyg'
 import { useSelector, useDispatch } from 'react-redux';
-import { setDescription, addTag } from './createWorldSlice';
+import { setDescription, addTag, addReferenceImage } from './createWorldSlice';
 import SearchSpotify from './SearchSpotify';
 import { WithContext as ReactTags } from 'react-tag-input'
 import ButtonCard from '../../components/ButtonCard';
@@ -10,6 +9,7 @@ import TextField from '@mui/material/TextField'
 import styles from './World.module.css';
 import Spotify from 'react-spotify-embed'
 import Button from '@mui/material/Button'
+import Upload from '../../components/Upload';
 
 const KeyCodes = {
     comma: 188,
@@ -18,7 +18,7 @@ const KeyCodes = {
 
 const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
-function CreateWorld({ maxReferenceTracks }) {
+function CreateWorld({ maxReferenceTracks, maxReferenceImages }) {
     // const [tags, setTags] = useState([]);
     const tags = useSelector((state) => state.createWorld.tags)
     const referenceTracks = useSelector((state) => state.createWorld.referenceTracks)
@@ -36,12 +36,28 @@ function CreateWorld({ maxReferenceTracks }) {
         return [...Array(maxReferenceTracks)].map((el, i) => 
             <>
                 {referenceTracks[i] ?
-                    <ReferenceTrack url={referenceTracks[i]}/>
+                    <ReferenceTrack key={el + i} url={referenceTracks[i]}/>
                     :
-                    <SearchSpotify />
+                    <SearchSpotify key={el + i} />
                 }
             </>
         )
+    }
+
+    const renderReferenceImages = () => {
+        return [...Array(maxReferenceImages)].map((el, i) => 
+            <>
+                {referenceTracks[i] ?
+                    <ReferenceImage key={el + i} url={referenceTracks[i]}/>
+                    :
+                    <Upload key={el + i} submitHandler={referenceImageHandler}/>
+                }
+            </>
+        )
+    }
+
+    const referenceImageHandler = (image) => {
+        addReferenceImage(image)
     }
 
     return (
@@ -53,6 +69,9 @@ function CreateWorld({ maxReferenceTracks }) {
             <h4>Select songs that will guide your world</h4>
             <div className={styles.referenceContainer}>
                 {renderReferenceTracks()}
+            </div>
+            <div className={styles.referenceContainer}>
+                {renderReferenceImages()}
             </div>
             <h1>Select Tags</h1>
             <h4>Choose words that describe your world</h4>
@@ -73,6 +92,12 @@ function CreateWorld({ maxReferenceTracks }) {
 function ReferenceTrack({ url }){
     return(
         <Spotify link={url}/>
+    )
+}
+
+function ReferenceImage({ url }){
+    return(
+        <image src={url}/>
     )
 }
 
