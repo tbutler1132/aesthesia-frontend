@@ -1,5 +1,6 @@
-import { dataTable } from "html-to-text/lib/formatter";
 import CreateComment from "./CreateComment";
+import styles from './World.module.css';
+import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
 function DiscussionContainer({ comments, songId }) {
 
@@ -12,8 +13,10 @@ function DiscussionContainer({ comments, songId }) {
     }
 
     return (
-        <div>
-            {renderComments()}
+        <div className={styles.discussionContainer}>
+            <div style={{overflow: "scroll", maxHeight: "300px"}}>
+                {renderComments()}
+            </div>
             <CreateComment songId={songId}/>
         </div>
     );
@@ -21,9 +24,15 @@ function DiscussionContainer({ comments, songId }) {
 
 function Comment({ comment }){
     return(
-        <p>
-            {comment.content}
-        </p>
+        <div style={{textAlign: "left", display: "flex", alignItems: "center"}}>
+            <EmojiEmotionsIcon />
+            <div style={{marginLeft: "10px"}}>
+                <p style={{color: "green"}}>Name <span style={{color: "grey", fontSize: "10px"}}>1:34 pm</span></p>
+                <p>
+                    {comment.content}
+                </p>
+            </div>
+        </div>
     )
 }
 

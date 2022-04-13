@@ -1,13 +1,13 @@
 nav {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin: 50px 20px 0 20px;
     padding-bottom: 15px;
     text-decoration: none;
     border-bottom: solid;
 }
 
-.worldNav > a {
+.worldNav > div > a {
     text-decoration: none;
     color: white;
     border-bottom: solid;
@@ -42,10 +42,39 @@ h1 {
 
 .container {
     border-radius: 4px;
-    background-color: #1F487E;
+    background-color: rgb(18, 40, 54);
     color: white;
     border: solid;
-    border-color: rgb(66, 0, 128);
+    border-color: white;
+    border-width: 1px;
+    padding: 1%;
+    display: flex;
+    text-align: left;
+    justify-content: space-around;
+}
+
+.submissionContainer {
+    border: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    margin: 40px 20% 40px 20%;
+    padding: 20px;
+    background-color: rgb(18, 40, 54);
+}
+
+.iterationContainer {
+    text-align: left;
+    max-width: fit-content;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.discussionContainer {
+    border: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    margin: 10px 20px 0px 20px;
+    background-color: rgb(18, 40, 54);
 }
 
 #audioReferenceContainer {

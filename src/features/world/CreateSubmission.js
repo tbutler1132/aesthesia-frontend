@@ -1,7 +1,9 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { set, useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
 import { useCreateSubmissionMutation, useGetCurrentSongQuery, useAddSubmissionToSongMutation } from '../../app/services/worlds'
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
 
 import Modal from '@mui/material/Modal'
 import Button from '@mui/material/Button'
@@ -26,7 +28,7 @@ function CreateSubmission() {
 
     let { id } = useParams()
     const { data, isLoading } = useGetCurrentSongQuery(id)
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
     const [open, setOpen] = useState(false);
     const [createSubmission, result] = useCreateSubmissionMutation()
     const [addSubmission] = useAddSubmissionToSongMutation()
@@ -81,18 +83,41 @@ function CreateSubmission() {
         })
 
 
-
-        // addSubmission({
-        //     id,
-
-        // })
-        
+        setOpen(false)
+        reset()
     }
+    // const renderKeyOptions = () => {
+    //     const arr = [
+    //         "C major",
+    //         "C#/Db major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //         // "A major",
+    //     ]
+
+    //     return arr.map(scale => 
+    //         <MenuItem value={scale}>{scale}</MenuItem>
+    //     )
+    // }
+
+
+
+    // addSubmission({
+    //     id,
+
+    // })
 
     if(isLoading) return <Button disabled>Open modal</Button>
     return (
         <>        
-            <Button onClick={handleOpen}>Open modal</Button>
+            <Button variant='outlined' color='success' onClick={handleOpen}>Create Submission</Button>
             <Modal
             open={open}
             onClose={handleClose}
@@ -101,9 +126,9 @@ function CreateSubmission() {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Text in a modal
+                        New Submission
                     </Typography>
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form style={{display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-around"}} onSubmit={handleSubmit(onSubmit)}>
                         <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} label="BPM" {...register("bpm")}/>    
                         <TextField label="Key" {...register("scale")}/>    
                         <TextField label="Master" {...register("master")}/>    
@@ -111,8 +136,8 @@ function CreateSubmission() {
                         <TextField label="Vocals" {...register("vocals")}/>    
                         <TextField label="Instruments" {...register("instruments")}/>    
                         <TextField label="Bass" {...register("bass")}/>    
-                        <TextField label="Description" multiline {...register("description")}/>    
-                        <input type='submit'/>
+                        <TextField label="Description" multiline rows={8} {...register("description")}/>    
+                        <Button type='submit'>Submit</Button>
                     </form>
                 </Box>
             </Modal>

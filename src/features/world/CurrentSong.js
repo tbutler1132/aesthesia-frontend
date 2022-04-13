@@ -2,6 +2,8 @@ import Nav from "./Nav";
 import DiscussionContainer from "./DiscussionContainer";
 import { useGetCurrentSongQuery, useUpdateCurrentIterationCompleteVotesMutation, useCompleteCurrentSongMutation } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
+import Button from "@mui/material/Button"
+import styles from './World.module.css';
 import CircularProgress from "@mui/material/CircularProgress"
 
 function CurrentSong() {
@@ -28,23 +30,27 @@ function CurrentSong() {
     return (
         <div>
             <Nav />
-            <hr />
             {isLoading 
                 ? 
                     <CircularProgress color="secondary"/>
                 :
             !data.iterations.length 
                 ?
-                <h1>No current song</h1>
+                    <h1>No current song</h1>
                 :
-                    <>
-                        <button onClick={() => voteHandler()}>Vote complete</button>
-                        <span>{data.currentIteration.completeVotes}</span>
-                        <h3>{data.currentIteration.bpm}</h3>
+                <>
+                    <div className={styles.iterationContainer}>
+                        <h2>Version: {data.currentIteration.version}</h2>
                         {renderStems()}
-                        <hr />
-                        <DiscussionContainer songId={data._id} comments={data.currentIteration.comments}/>
-                    </>
+                        <hr/>
+                        <div style={{width: "500px"}}>
+                            <p>{data.currentIteration.description}</p>
+                        </div>
+                        <Button variant="outlined" color={data.currentIteration.completeVotes === 4 ? "success" : "secondary"} onClick={() => voteHandler()}>Vote complete</Button>
+                    </div>
+     
+                    <DiscussionContainer songId={data._id} comments={[...data.currentIteration.comments].reverse()}/>
+                </>
             }
         </div>
     );

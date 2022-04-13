@@ -8,18 +8,19 @@ function CreateComment({ songId }) {
 
 
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, resetField, handleSubmit, watch, formState: { errors } } = useForm();
     const [submitComment, /*result*/] = useCreateIterationCommentMutation()
 
     const onSubmit = (data) => {
         submitComment({id: songId, comment: {content: data.content, votes: 0}})
+        resetField("content")
     }
 
     return (
-        <div>
+        <div className='create-comment'>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <TextField {...register("content")}/>
-                <input type="submit" />
+                <TextField placeholder='Write a comment' style={{backgroundColor: "grey"}} variant="outlined" fullWidth {...register("content")}/>
+                {/* <input type="submit" /> */}
             </form>
         </div>
     );
