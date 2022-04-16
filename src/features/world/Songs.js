@@ -1,6 +1,7 @@
 import { useGetWorldSongsQuery } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
 import Nav from "./Nav";
+import CircularProgress from "@mui/material/CircularProgress"
 
 
 function Songs() {
@@ -16,7 +17,7 @@ function Songs() {
         )
     }
 
-if(isLoading) return <div>Loading...</div>
+if(isLoading) return <CircularProgress />
     return (
         <div>
             <Nav />

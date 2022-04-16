@@ -22,8 +22,8 @@ function World() {
                 <div style={{justifyContent: "flex-start"}} className={styles.container}>
                     <p>{data.description}</p>
                 </div>
-                <ReferenceContainer referenceType="audio" data={data.referenceSongs}/>
-                <ReferenceContainer referenceType="images" data={data.referenceImages}/>
+                <ReferenceContainer referenceType="Songs" data={data.referenceSongs}/>
+                <ReferenceContainer referenceType="Art" data={data.referenceImages}/>
                 <h2>Tags</h2>
                 <div className={styles.tagsContainer}>
                     {data.tags.map(tag => 
@@ -39,16 +39,16 @@ function World() {
 function ReferenceContainer({referenceType, data}){
     return(
         <>
-            <h2>Reference {referenceType === "audio" ? "Songs" : "Art"}</h2>
+            <h2>Reference {referenceType}</h2>
             <div className={styles.container}>
-                {referenceType === "audio"
+                {referenceType === "Songs"
                     ?
-                        data.map(audio => 
-                            <Spotify key={audio._id} link={audio}/>
+                        data.map(song => 
+                            <Spotify key={song._id} link={song}/>
                         )
                     :
-                        data.map(image => 
-                            <img key={image} height="300px" width="300px" src={image} alt=""/>
+                        data.map(art => 
+                            <img key={art} height="300px" width="300px" src={art} alt=""/>
                         )
                 }
             </div>
