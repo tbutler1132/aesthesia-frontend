@@ -10,10 +10,7 @@ function Songs() {
 
     const renderSongs = () => {
         return data.map(song => 
-            <Song key={song._id} song={song}/>
-            // <div key={song._id}>
-            //     {song.title}
-            // </div>    
+            <Song key={song._id} song={song}/> 
         )
     }
 

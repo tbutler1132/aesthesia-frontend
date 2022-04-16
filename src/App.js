@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 // import { Counter } from './features/counter/Counter';
 import Nav from './components/Nav'
 import User from './features/user/User';
-import World from './features/world/World';
+import World from './features/world/World.tsx';
 import Songs from './features/world/Songs';
 import Submissions from './features/world/Submissions';
 import Home from './features/home/Home';
