@@ -3,7 +3,7 @@ import DiscussionContainer from "./DiscussionContainer";
 import { useGetCurrentSongQuery, useUpdateCurrentIterationCompleteVotesMutation, useCompleteCurrentSongMutation } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
 import Button from "@mui/material/Button"
-import styles from './World.module.css';
+// import styles from './World.module.css';
 import CircularProgress from "@mui/material/CircularProgress"
 
 function CurrentSong() {
@@ -39,7 +39,7 @@ function CurrentSong() {
                     <h1>No current song</h1>
                 :
                 <>
-                    <div className={styles.iterationContainer}>
+                    <div className="iterationContainer">
                         <h2>Version: {data.currentIteration.version}</h2>
                         {renderStems()}
                         <hr/>

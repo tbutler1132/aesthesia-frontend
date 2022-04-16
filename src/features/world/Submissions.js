@@ -2,7 +2,6 @@ import Nav from "./Nav";
 import { useGetCurrentSongQuery, useUpdateSubmissionMutation, useUpdateCurrentIterationMutation } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress"
-import styles from './World.module.css';
 
 import Button from "@mui/material/Button";
 
@@ -49,7 +48,7 @@ function Submission({ submission, songId }){
     }
 
     return(
-        <div className={styles.submissionContainer} key={submission._id}>
+        <div className="submissionContainer" key={submission._id}>
             {/* <p>Votes: {submission.votes}</p> */}
             <h3 style={{textDecoration: "underline"}}>Audio Player: {submission.bpm} Bpm</h3>
             <p>{submission.description}</p>

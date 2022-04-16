@@ -1,5 +1,5 @@
 import CreateComment from "./CreateComment";
-import styles from './World.module.css';
+// import styles from './World.module.css';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
 function DiscussionContainer({ comments, songId }) {
@@ -13,7 +13,7 @@ function DiscussionContainer({ comments, songId }) {
     }
 
     return (
-        <div className={styles.discussionContainer}>
+        <div className="discussionContainer">
             <div style={{overflow: "scroll", maxHeight: "300px"}}>
                 {renderComments()}
             </div>
