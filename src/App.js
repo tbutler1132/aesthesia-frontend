@@ -10,7 +10,7 @@ import Songs from './features/world/Songs';
 import Submissions from './features/world/Submissions';
 import Home from './features/home/Home';
 import Login from './features/home/Login';
-import Discover from './features/discover/Discover';
+import Discover from './features/discover/Discover.tsx';
 import CurrentSong from './features/world/CurrentSong';
 import CreateWorld from './features/world/CreateWorld';
 
