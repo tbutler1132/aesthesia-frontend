@@ -14,7 +14,7 @@ function DiscussionContainer({ comments, songId }) {
 
     return (
         <div className={styles.discussionContainer}>
-            <div style={{overflow: "scroll", maxHeight: "300px"}}>
+            <div style={{overflow: "scroll", height: "30vh", maxHeight: "50vh"}}>
                 {renderComments()}
             </div>
             <CreateComment songId={songId}/>

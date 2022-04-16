@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 // import { Counter } from './features/counter/Counter';
 import Nav from './components/Nav'
 import User from './features/user/User';
-import World from './features/world/World.tsx';
+import World from './features/world/World';
 import Songs from './features/world/Songs';
 import Submissions from './features/world/Submissions';
 import Home from './features/home/Home';
@@ -23,8 +23,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/users" element={<User />} />
         <Route path="/discover" element={<Discover />} />
-        <Route path="/worlds/:id/world" element={<World />} />
         <Route path="/worlds/new" element={<CreateWorld maxReferenceTracks={3} maxReferenceImages={3}/>} />
+        <Route path="/worlds/:id/world" element={<World />} />
         <Route path="/worlds/:id/songs" element={<Songs />} />
         <Route path="/worlds/:id/currentSong" element={<CurrentSong />} />
         <Route path="/worlds/:id/submissions" element={<Submissions />} />

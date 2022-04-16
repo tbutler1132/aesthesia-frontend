@@ -48,7 +48,6 @@ function CurrentSong() {
                         </div>
                         <Button variant="outlined" color={data.currentIteration.completeVotes === 4 ? "success" : "secondary"} onClick={() => voteHandler()}>Vote complete</Button>
                     </div>
-     
                     <DiscussionContainer songId={data._id} comments={[...data.currentIteration.comments].reverse()}/>
                 </>
             }

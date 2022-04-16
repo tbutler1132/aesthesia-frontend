@@ -77,14 +77,14 @@ h1 {
     background-color: rgb(18, 40, 54);
 }
 
-#audioReferenceContainer {
+/* #audioReferenceContainer {
     border: solid;
 }
 
 #imageReferenceContainer {
     display: flex;
     justify-content: space-around;
-}
+} */
 
 .tagsContainer {
     display: flex;

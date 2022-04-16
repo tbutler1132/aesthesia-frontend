@@ -22,29 +22,38 @@ function World() {
                 <div style={{justifyContent: "flex-start"}} className={styles.container}>
                     <p>{data.description}</p>
                 </div>
-                <h2>Reference Songs</h2>
-                <div id={styles.audioReferenceContainer} className={styles.container}>
-                    {data.referenceSongs.map(song => 
-                        <Spotify link={song}/> 
-                        // <span key={song}>{song}</span> 
-                    )}
-                </div>
-                <h2>Reference Art</h2>
-                <div id={styles.imageReferenceContainer} className={styles.container}>
-                    {data.referenceImages.map(image => 
-                        <img key={image} height="300px" width="300px" src={image} alt=""/>
-                    )}
-                </div>
+                <ReferenceContainer referenceType="audio" data={data.referenceSongs}/>
+                <ReferenceContainer referenceType="images" data={data.referenceImages}/>
                 <h2>Tags</h2>
                 <div className={styles.tagsContainer}>
                     {data.tags.map(tag => 
-                        <Chip style={{marginLeft: "10px"}} size="large" color="primary" variant="outlined" key={tag} label={tag}/>    
+                        <Chip style={{marginLeft: "10px"}} color="primary" variant="outlined" key={tag} label={tag}/>    
                     )}
                 </div>
                 <Outlet />
             </div>
         </div>
     );
+}
+
+function ReferenceContainer({referenceType, data}){
+    return(
+        <>
+            <h2>Reference {referenceType === "audio" ? "Songs" : "Art"}</h2>
+            <div className={styles.container}>
+                {referenceType === "audio"
+                    ?
+                        data.map(audio => 
+                            <Spotify key={audio._id} link={audio}/>
+                        )
+                    :
+                        data.map(image => 
+                            <img key={image} height="300px" width="300px" src={image} alt=""/>
+                        )
+                }
+            </div>
+        </>
+    )
 }
 
 export default World;
