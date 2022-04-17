@@ -24,12 +24,7 @@ function World() {
                 </div>
                 <ReferenceContainer referenceType="Songs" data={data.referenceSongs}/>
                 <ReferenceContainer referenceType="Art" data={data.referenceImages}/>
-                <h2>Tags</h2>
-                <div className="tagsContainer">
-                    {data.tags.map(tag => 
-                        <Chip style={{marginLeft: "10px"}} color="primary" variant="outlined" key={tag} label={tag}/>    
-                    )}
-                </div>
+                <TagsContainer tagColor="primary" tags={data.tags}/>
                 <Outlet />
             </div>
         </div>
@@ -41,7 +36,7 @@ interface ReferenceContainerProps {
     data: any
 }
 
-function ReferenceContainer({referenceType, data}: ReferenceContainerProps){
+function ReferenceContainer({ referenceType, data }: ReferenceContainerProps){
     return(
         <>
             <h2>Reference {referenceType}</h2>
@@ -56,6 +51,19 @@ function ReferenceContainer({referenceType, data}: ReferenceContainerProps){
                             <img key={art} height="300px" width="300px" src={art} alt=""/>
                         )
                 }
+            </div>
+        </>
+    )
+}
+
+function TagsContainer({ tags, tagColor }){
+    return(
+        <>
+            <h2>Tags</h2>
+            <div className="tagsContainer">
+                {tags.map(tag => 
+                    <Chip style={{marginLeft: "10px"}} color={tagColor} variant="outlined" key={tag} label={tag}/>    
+                )}
             </div>
         </>
     )
