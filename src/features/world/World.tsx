@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import Nav from "./Nav.tsx";
 import { useGetWorldQuery } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
-// import styles from './World.module.css';
 import Spotify from 'react-spotify-embed'
 import CircularProgress from "@mui/material/CircularProgress"
 import Chip from "@mui/material/Chip"
