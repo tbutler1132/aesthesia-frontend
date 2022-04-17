@@ -6,12 +6,12 @@ import { Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav'
 import User from './features/user/User';
 import World from './features/world/World.tsx';
-import Songs from './features/world/Songs';
-import Submissions from './features/world/Submissions';
+import Songs from './features/world/Songs.tsx';
+import Submissions from './features/world/Submissions.tsx';
 import Home from './features/home/Home';
 import Login from './features/home/Login';
 import Discover from './features/discover/Discover.tsx';
-import CurrentSong from './features/world/CurrentSong';
+import CurrentSong from './features/world/CurrentSong.tsx';
 import CreateWorld from './features/world/CreateWorld';
 
 function App() {

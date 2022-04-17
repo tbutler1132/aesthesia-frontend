@@ -8,8 +8,6 @@ import ButtonCard from '../../components/ButtonCard';
 import Modal from '@mui/material/Modal'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField'
 
 const style = {
     position: 'absolute',
@@ -25,7 +23,7 @@ const style = {
 };
 
 
-function SearchSpotify(props) {
+function SearchSpotify() {
     const [open, setOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState("")
     const [searchTracks, result] = useLazySearchTracksQuery()
@@ -44,18 +42,14 @@ function SearchSpotify(props) {
     }
 
     const renderSearchResults = () => {
-            return result.data.map(track => 
-                <SearchResult url={track.urls.spotify} /> 
-            )
-
+        return result.data.map(track => 
+            <SearchResult url={track.urls.spotify} /> 
+        )
     }
-
-    console.log(result.isSuccess)
-
 
     return (
         <>        
-            <ButtonCard clickHandler={handleOpen} onClick={handleOpen} />
+            <ButtonCard clickHandler={handleOpen} />
             <Modal
             open={open}
             onClose={handleClose}

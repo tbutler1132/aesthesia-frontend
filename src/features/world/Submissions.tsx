@@ -1,8 +1,8 @@
-import Nav from "./Nav";
+// @ts-ignore
+import Nav from "./Nav.tsx";
 import { useGetCurrentSongQuery, useUpdateSubmissionMutation, useUpdateCurrentIterationMutation } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress"
-import styles from './World.module.css';
 
 import Button from "@mui/material/Button";
 
@@ -37,8 +37,8 @@ function Submissions() {
 
 function Submission({ submission, songId }){
 
-    const [voteOnSubmission, /**result**/] = useUpdateSubmissionMutation()
-    const [updateCurrentIteration, /**result**/] = useUpdateCurrentIterationMutation()
+    const [voteOnSubmission] = useUpdateSubmissionMutation()
+    const [updateCurrentIteration] = useUpdateCurrentIterationMutation()
 
     const voteHandler = (id, currentVotes) => {
         if(currentVotes === 4){
@@ -50,8 +50,7 @@ function Submission({ submission, songId }){
     }
 
     return(
-        <div className={styles.submissionContainer} key={submission._id}>
-            {/* <p>Votes: {submission.votes}</p> */}
+        <div className="submissionContainer" key={submission._id}>
             <h3 style={{textDecoration: "underline"}}>Audio Player: {submission.bpm} Bpm</h3>
             <p>{submission.description}</p>
             <Button color={submission.votes === 4 ? "success" : "primary"} variant="outlined" onClick={() => voteHandler(submission._id, submission.votes)}>Vote</Button>

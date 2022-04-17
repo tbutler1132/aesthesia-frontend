@@ -8,7 +8,7 @@ function CreateComment({ songId }) {
 
 
 
-    const { register, resetField, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, resetField, handleSubmit } = useForm();
     const [submitComment, /*result*/] = useCreateIterationCommentMutation()
 
     const onSubmit = (data) => {

@@ -1,6 +1,7 @@
 import { useGetWorldSongsQuery } from "../../app/services/worlds";
 import { useParams } from "react-router-dom";
-import Nav from "./Nav";
+// @ts-ignore
+import Nav from "./Nav.tsx";
 import CircularProgress from "@mui/material/CircularProgress"
 
 

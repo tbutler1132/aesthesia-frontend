@@ -1,12 +1,10 @@
-// import { useForm, FormProvider, useFormContext } from "react-hook-form";
 // import { Editor } from 'react-draft-wysiwyg'
 import { useSelector, useDispatch } from 'react-redux';
 import { setDescription, addTag, addReferenceImage } from './createWorldSlice';
-import SearchSpotify from './SearchSpotify';
+// @ts-ignore
+import SearchSpotify from './SearchSpotify.tsx';
 import { WithContext as ReactTags } from 'react-tag-input'
-import ButtonCard from '../../components/ButtonCard';
 import TextField from '@mui/material/TextField'
-import styles from './World.module.css';
 import Spotify from 'react-spotify-embed'
 import Button from '@mui/material/Button'
 import Upload from '../../components/Upload';
@@ -61,16 +59,16 @@ function CreateWorld({ maxReferenceTracks, maxReferenceImages }) {
     }
 
     return (
-        <div className={styles.createWorld}>
+        <div className="createWorld">
             <h1>Description</h1>
             <h4>Write a captivating description of your world</h4>
             <TextField color='success' variant='outlined' fullWidth multiline rows={10} onChange={descriptionChangeHandler}/>
             <h1>Add Reference Tracks</h1>
             <h4>Select songs that will guide your world</h4>
-            <div className={styles.referenceContainer}>
+            <div className="referenceContainer">
                 {renderReferenceTracks()}
             </div>
-            <div className={styles.referenceContainer}>
+            <div className="referenceContainer">
                 {renderReferenceImages()}
             </div>
             <h1>Select Tags</h1>

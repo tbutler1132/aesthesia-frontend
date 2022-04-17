@@ -1,6 +1,7 @@
 import { Link, useParams, useLocation } from "react-router-dom";
-import styles from './World.module.css';
-import CreateSubmission from "./CreateSubmission";
+// import styles from './World.module.css';
+// @ts-ignore
+import CreateSubmission from "./CreateSubmission.tsx";
 
 
 function Nav() {
@@ -8,7 +9,7 @@ function Nav() {
     let params = useLocation()
 
     return (
-        <nav className={styles.worldNav}>
+        <nav className="worldNav">
             <div>
                 <Link style={{borderColor: params.pathname === `/worlds/${id}/world` ? "purple" : "black"}} to={`/worlds/${id}/world`}>World</Link>
                 <Link style={{borderColor: params.pathname === `/worlds/${id}/currentSong` ? "purple" : "black"}} to={`/worlds/${id}/currentSong`}>Current Song</Link>

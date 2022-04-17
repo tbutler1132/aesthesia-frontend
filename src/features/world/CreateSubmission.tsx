@@ -1,9 +1,7 @@
 import { useState } from 'react'
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
-import { useCreateSubmissionMutation, useGetCurrentSongQuery, useAddSubmissionToSongMutation } from '../../app/services/worlds'
-import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
+import { useCreateSubmissionMutation, useGetCurrentSongQuery } from '../../app/services/worlds'
 
 import Modal from '@mui/material/Modal'
 import Button from '@mui/material/Button'
@@ -28,10 +26,9 @@ function CreateSubmission() {
 
     let { id } = useParams()
     const { data, isLoading } = useGetCurrentSongQuery(id)
-    const { register, reset, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit } = useForm();
     const [open, setOpen] = useState(false);
-    const [createSubmission, result] = useCreateSubmissionMutation()
-    const [addSubmission] = useAddSubmissionToSongMutation()
+    const [createSubmission] = useCreateSubmissionMutation()
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
