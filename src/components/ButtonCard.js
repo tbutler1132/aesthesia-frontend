@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 function ButtonCard({ clickHandler }) {
     return (
         <div className='button-card'>
-            <AddIcon onClick={() => clickHandler()} />
+            <AddIcon style={{color: "black", cursor: "pointer"}} onClick={() => clickHandler()} />
         </div>
     );
 }

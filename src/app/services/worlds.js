@@ -72,7 +72,13 @@ export const worldsApi = createApi({
         }),
         invalidatesTags: ['CurrentSong']
       }),
-
+      createWorld: builder.mutation({
+        query: (world) => ({
+          url: `worlds`,
+          method: 'POST',
+          body: world,
+        }),
+      })
     }),
 })
 
@@ -87,5 +93,6 @@ export const {
     useAddSubmissionToSongMutation,
     useUpdateCurrentIterationMutation,
     useUpdateCurrentIterationCompleteVotesMutation,
-    useCompleteCurrentSongMutation
+    useCompleteCurrentSongMutation,
+    useCreateWorldMutation
 } = worldsApi

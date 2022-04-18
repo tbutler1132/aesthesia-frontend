@@ -7,6 +7,7 @@ import ButtonCard from '../../components/ButtonCard';
 
 import Modal from '@mui/material/Modal'
 import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 
 const style = {
@@ -57,13 +58,15 @@ function SearchSpotify() {
             aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <form onSubmit={submitHandler}>
-                        <input onChange={queryChangeHandler}/>
-                        <input type="submit" />
+                    <form style={{display: "flex"}} onSubmit={submitHandler}>
+                        <TextField onChange={queryChangeHandler}/>
+                        <Button style={{marginLeft: "20px"}} variant='contained' type="submit">Search</Button>
                     </form>
                 {result.isSuccess 
                 ?
-                renderSearchResults()
+                <div style={{height: "90%", overflow: "scroll"}}>
+                    {renderSearchResults()}
+                </div>
                 :
                 null
                 
