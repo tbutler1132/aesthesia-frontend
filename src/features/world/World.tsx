@@ -2,15 +2,18 @@ import { Outlet } from "react-router-dom";
 // @ts-ignore
 import Nav from "./Nav.tsx";
 import { useGetWorldQuery } from "../../app/services/worlds";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Spotify from 'react-spotify-embed'
 import CircularProgress from "@mui/material/CircularProgress"
 import Chip from "@mui/material/Chip"
 
 function World() {
 
-    let { id } = useParams()
+    let { id, artist } = useParams()
+    let [searchParams, setSearchParams] = useSearchParams()
     const { data, isLoading } = useGetWorldQuery(id)
+
+    console.log(searchParams, "PARAMS")
 
     if(isLoading) return <CircularProgress />
     return (

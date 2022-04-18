@@ -3,7 +3,13 @@ import CreateComment from "./CreateComment.tsx";
 // import styles from './World.module.css';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
+const formatDate = (date) => {
+    return new Date(date).toLocaleTimeString('en-gb')
+}
+
 function DiscussionContainer({ comments, songId }) {
+
+    console.log(comments)
 
 
     const renderComments = () => {
@@ -15,10 +21,10 @@ function DiscussionContainer({ comments, songId }) {
 
     return (
         <div className="discussionContainer">
+            <CreateComment songId={songId}/>
             <div style={{overflow: "scroll", height: "30vh", maxHeight: "50vh"}}>
                 {renderComments()}
             </div>
-            <CreateComment songId={songId}/>
         </div>
     );
 }
@@ -28,7 +34,7 @@ function Comment({ comment }){
         <div style={{textAlign: "left", display: "flex", alignItems: "center"}}>
             <EmojiEmotionsIcon />
             <div style={{marginLeft: "10px"}}>
-                <p style={{color: "green"}}>Name <span style={{color: "grey", fontSize: "10px"}}>1:34 pm</span></p>
+                <p style={{color: "green"}}>{comment.user?.artistName} <span style={{color: "grey", fontSize: "10px"}}>{formatDate(comment.createdAt)}</span></p>
                 <p>
                     {comment.content}
                 </p>

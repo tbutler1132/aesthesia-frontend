@@ -9,7 +9,7 @@ import World from './features/world/World.tsx';
 import Songs from './features/world/Songs.tsx';
 import Submissions from './features/world/Submissions.tsx';
 import Home from './features/home/Home';
-import Login from './features/home/Login';
+import Login from './features/home/Login.tsx';
 import Discover from './features/discover/Discover.tsx';
 import CurrentSong from './features/world/CurrentSong.tsx';
 import CreateWorld from './features/world/CreateWorld';

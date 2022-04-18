@@ -59,9 +59,9 @@ function CurrentSong() {
 
 function Stem({ stem }){
     return(
-        <p>
+        <div className="labeled-audio-container">
             {stem.track}: <audio src={stem.file} controls/>
-        </p>
+        </div>
     )
 }
 

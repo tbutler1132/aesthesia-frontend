@@ -5,8 +5,18 @@ export const worldsApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000/' }),
     tagTypes: ['Submissions', "Comments", "completeVotes", "CurrentSong"],
     endpoints: (builder) => ({
+      login: builder.mutation({
+        query: (credentials) => ({
+          url: `users/signin`,
+          method: 'POST',
+          body: credentials,
+        }),   
+      }),
       getWorlds: builder.query({
         query: () => `worlds`,
+      }),
+      getUsers: builder.query({
+        query: () => 'users'
       }),
       getWorld: builder.query({
         query: (id) => `worlds/${id}`,
@@ -94,5 +104,7 @@ export const {
     useUpdateCurrentIterationMutation,
     useUpdateCurrentIterationCompleteVotesMutation,
     useCompleteCurrentSongMutation,
-    useCreateWorldMutation
+    useCreateWorldMutation,
+    useGetUsersQuery,
+    useLoginMutation
 } = worldsApi
