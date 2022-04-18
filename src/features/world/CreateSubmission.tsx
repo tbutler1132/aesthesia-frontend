@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useParams } from 'react-router-dom'
 import { useCreateSubmissionMutation, useGetCurrentSongQuery } from '../../app/services/worlds'
+import Upload from '../../components/Upload'
 
 import Modal from '@mui/material/Modal'
 import Button from '@mui/material/Button'
@@ -20,6 +21,7 @@ const style = {
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
+    overflow: "scroll"
 };
 
 function CreateSubmission() {
@@ -29,44 +31,51 @@ function CreateSubmission() {
     const { register, reset, handleSubmit } = useForm();
     const [open, setOpen] = useState(false);
     const [createSubmission] = useCreateSubmissionMutation()
+    const [master, setMaster] = useState([])
+    const [vocals, setVocals] = useState([])
+    const [instruments, setInstruments] = useState([])
+    const [bass, setBass] = useState([])
+    const [drums, setDrums] = useState([])
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const onSubmit = async (submission) => {
         const { 
-            bass,
+            // bass,
+            scale,
             bpm,
             description,
-            drums,
-            instruments,
-            master,
-            scale,
-            vocals
+            // drums,
+            // instruments,
+            // master,
+            // vocals
          } = submission
 
          const stems = [
              {
                  track: 'drums',
-                 file: drums
+                 file: drums[0]
              },
              {
                  track: 'master',
-                 file: master
+                 file: master[0]
              },
              {
                  track: 'bass',
-                 file: bass
+                 file: bass[0]
              },
              {
                  track: 'instruments',
-                 file: instruments
+                 file: instruments[0]
              },
              {
                  track: 'vocals',
-                 file: vocals
+                 file: vocals[0]
              },
          ]
+
+         console.log(stems)
 
          
         createSubmission(
@@ -83,6 +92,7 @@ function CreateSubmission() {
         setOpen(false)
         reset()
     }
+
     // const renderKeyOptions = () => {
     //     const arr = [
     //         "C major",
@@ -125,14 +135,14 @@ function CreateSubmission() {
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         New Submission
                     </Typography>
+                    <Upload type="Master" files={master} setFiles={setMaster}/>
+                    <Upload type="Drums" files={drums} setFiles={setDrums}/> 
+                    <Upload type="Vocals" files={vocals} setFiles={setVocals}/> 
+                    <Upload type="Instruments" files={instruments} setFiles={setInstruments}/> 
+                    <Upload type="Bass" files={bass} setFiles={setBass}/> 
                     <form style={{display: "flex", flexDirection: "column", height: "100%", justifyContent: "space-around"}} onSubmit={handleSubmit(onSubmit)}>
                         <TextField inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} label="BPM" {...register("bpm")}/>    
-                        <TextField label="Key" {...register("scale")}/>    
-                        <TextField label="Master" {...register("master")}/>    
-                        <TextField label="Drums" {...register("drums")}/>    
-                        <TextField label="Vocals" {...register("vocals")}/>    
-                        <TextField label="Instruments" {...register("instruments")}/>    
-                        <TextField label="Bass" {...register("bass")}/>    
+                        <TextField label="Key" {...register("scale")}/>     
                         <TextField label="Description" multiline rows={8} {...register("description")}/>    
                         <Button type='submit'>Submit</Button>
                     </form>

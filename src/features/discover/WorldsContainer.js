@@ -16,7 +16,7 @@ function WorldsContainer({ header }) {
 
     const renderWorlds = () => {
         return data.map(world => 
-            <WorldPreview world={world} />    
+            <WorldPreview key={world._id} world={world} />    
         )
     }
 

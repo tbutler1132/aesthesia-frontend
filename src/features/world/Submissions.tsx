@@ -6,6 +6,11 @@ import CircularProgress from "@mui/material/CircularProgress"
 
 import Button from "@mui/material/Button";
 
+
+const findStem = (stems: any[], type: string) => {
+    return stems.find(stem => stem.track === type)
+}
+
 function Submissions() {
 
     //Redundant
@@ -51,7 +56,7 @@ function Submission({ submission, songId }){
 
     return(
         <div className="submissionContainer" key={submission._id}>
-            <h3 style={{textDecoration: "underline"}}>Audio Player: {submission.bpm} Bpm</h3>
+            <h3 style={{textDecoration: "underline"}}>Audio Player: {findStem(submission.stems, "master").file} Bpm</h3>
             <p>{submission.description}</p>
             <Button color={submission.votes === 4 ? "success" : "primary"} variant="outlined" onClick={() => voteHandler(submission._id, submission.votes)}>Vote</Button>
         </div>  
