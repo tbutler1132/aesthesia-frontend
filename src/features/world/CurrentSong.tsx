@@ -60,7 +60,7 @@ function CurrentSong() {
 function Stem({ stem }){
     return(
         <p>
-            {stem.track}: {stem.file}
+            {stem.track}: <audio src={stem.file} controls/>
         </p>
     )
 }
