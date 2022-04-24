@@ -8,7 +8,7 @@ function Nav() {
                 <Link style={{fontSize: "36px"}} to="/discover">Aesthesia</Link>
             </div>
             <div className="right">
-                <Link style={{marginRight: "15px"}} to="/worlds/new">Your World</Link>
+                <Link style={{marginRight: "15px"}} to="/worlds/new">Create Your World</Link>
                 <AccountCircleIcon />
             </div>
         </div>

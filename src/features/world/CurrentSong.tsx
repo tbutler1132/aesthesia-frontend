@@ -42,7 +42,8 @@ function CurrentSong() {
                 :
                 <>
                     <div className="iterationContainer">
-                        <h2>Version: {data.currentIteration.version}</h2>
+                        {/* <h2>Version: {data.currentIteration.version}</h2> */}
+                        <h2>Latest version</h2>
                         {renderStems()}
                         <hr/>
                         <div style={{width: "500px"}}>
